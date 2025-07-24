@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getGoals, addGoal, updateGoal, deleteGoal } from '../api';
+// eslint-disable-next-line no-unused-vars
+import { getGoals, addGoal, updateGoal, deleteGoal } from '../api'; 
 
 export default function useGoals() {
   const [goals, setGoals] = useState([]);
