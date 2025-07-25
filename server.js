@@ -1,10 +1,6 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import cors from 'cors';
 import jsonServer from 'json-server';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const jsonServerRouter = jsonServer.router('db.json');
@@ -12,14 +8,28 @@ const jsonServerMiddlewares = jsonServer.defaults();
 
 const PORT = process.env.PORT || 3001;
 
+// CORS configuration for production
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://your-app.vercel.app',
+    /\.vercel\.app$/
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'build')));
-app.use('/api', jsonServerMiddlewares, jsonServerRouter);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
+
+// API routes
+app.use('/api', jsonServerMiddlewares, jsonServerRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

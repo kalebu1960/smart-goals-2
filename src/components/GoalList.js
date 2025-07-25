@@ -2,7 +2,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useGoals from '../hooks/useGoals';
-import GoalItem from './GoalItem';
+import GoalItem from './GoalItem.js';
 
 export default function GoalList() {
   const { goals, loading, error, handleAdd, handleUpdate, handleDelete } = useGoals();

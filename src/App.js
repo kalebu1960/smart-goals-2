@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getGoals } from './api';
-import GoalList from './components/GoalList';
+import { getGoals } from './api.js';
+import GoalList from './components/GoalList.js';
 
 function App() {
   const [goals, setGoals] = useState([]);

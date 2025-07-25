@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from './ProgressBar';
+import ProgressBar from './ProgressBar.js';
 import styles from './GoalItem.module.css';
 import useGoalController from '../hooks/useGoalController';
 
