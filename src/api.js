@@ -1,8 +1,7 @@
-
-import axios from 'axios';
+const axios = require('axios');
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001'
+  baseURL: 'https://your-backend.onrender.com'
 });
 
 export const getGoals = () => api.get('/goals').then(res => res.data);
