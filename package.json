@@ -1,34 +1,45 @@
 {
   "name": "smart-goal-planner",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://kalebu1960.github.io/smart-goal-planner",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kalebu1960/smart-goal-planner.git"
+    "url": "git+https://github.com/kalebu1960/smart-goal-planner.git"
   },
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.10.0",
+    "@testing-library/user-event": "^14.5.1",
+    "axios": "^1.6.2",
+    "express": "^5.1.0",
     "gh-pages": "^6.3.0",
-    "json-server": "^1.0.0-beta.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "json-server": "0.17.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.60.0",
+    "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "recharts": "^3.1.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^3.5.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
+    "start:fullstack": "concurrently -n 'FRONTEND,BACKEND' -c 'bgBlue.bold,bgGreen.bold' \"react-scripts start\" \"node server.js\"",
+    "start:mock-api": "concurrently \"react-scripts start\" \"npm run mock-api\"",
     "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:ci": "react-scripts test --ci --coverage",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b main --dotfiles",
+    "server": "node server.js",
+    "mock-api": "json-server --watch db.json --port 3001 --delay 500",
+    "prod-server": "node server.js --env production",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx",
+    "format": "prettier --write src/**/*.{js,jsx,css}"
   },
   "eslintConfig": {
     "extends": [
@@ -49,8 +60,17 @@
     ]
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/serviceWorker.js",
+      "!src/setupTests.js"
+    ],
     "transformIgnorePatterns": [
-      "/node_modules/(?!axios)"
+      "/node_modules/(?!axios|react-toastify)"
     ]
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "type": "module"
 }

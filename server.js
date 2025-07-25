@@ -1,24 +1,27 @@
-const express = require("express");
-const path = require("path");
-const jsonServer = require("json-server");
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import jsonServer from 'json-server';
 
-const server = express();
-const router = jsonServer.router("db.json");
-const middlewares = jsonServer.defaults();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const jsonServerRouter = jsonServer.router('db.json');
+const jsonServerMiddlewares = jsonServer.defaults();
 
 const PORT = process.env.PORT || 3001;
 
-// Serve static React files
-server.use(express.static(path.join(__dirname, "build")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'build')));
+app.use('/api', jsonServerMiddlewares, jsonServerRouter);
 
-// JSON Server routes under /api
-server.use("/api", middlewares, router);
-
-// For all other routes, serve index.html from React build
-server.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API available at http://localhost:${PORT}/api`);
 });

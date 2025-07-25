@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const api = axios.create({
-  baseURL: 'https://your-backend.onrender.com'
+  baseURL: 'https://your-backend.onrender.com/api'
 });
 
 export const getGoals = () => api.get('/goals').then(res => res.data);
