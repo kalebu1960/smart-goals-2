@@ -2,13 +2,8 @@ services:
   - type: web
     name: smart-goal-planner-api
     env: node
-    buildCommand: npm install
-    startCommand: npm run server
+    buildCommand: cp package-backend.json package.json && npm install
+    startCommand: node server.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        fromService:
-          type: web
-          name: smart-goal-planner-api
-          property: port
