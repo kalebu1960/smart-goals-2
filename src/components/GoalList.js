@@ -1,7 +1,7 @@
 // src/components/GoalList.js
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useGoals from '../hooks/useGoals';
+import useGoals from '../hooks/useGoals.js';
 import GoalItem from './GoalItem.js';
 
 export default function GoalList() {

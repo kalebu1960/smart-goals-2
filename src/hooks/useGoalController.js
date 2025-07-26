@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { updateGoal, deleteGoal } from '../api';
+import { updateGoal, deleteGoal } from '../api.js';
 
 export default function useGoalController(goal, onUpdate, onDelete) {
   const [editing, setEditing] = useState(false);

@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressBar from './ProgressBar.js';
 import styles from './GoalItem.module.css';
-import useGoalController from '../hooks/useGoalController';
+import useGoalController from '../hooks/useGoalController.js';
 
 export default function GoalItem({ goal, onUpdate, onDelete }) {
   const ctrl = useGoalController(goal, onUpdate, onDelete);

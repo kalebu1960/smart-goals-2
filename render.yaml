@@ -2,7 +2,7 @@ services:
   - type: web
     name: smart-goal-planner-api
     env: node
-    buildCommand: cp package-backend.json package.json && npm install
+    buildCommand: cp package-backend.json package.json && npm install --legacy-peer-deps
     startCommand: node server.js
     envVars:
       - key: NODE_ENV
