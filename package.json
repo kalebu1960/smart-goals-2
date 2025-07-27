@@ -1,8 +1,8 @@
 {
-  "name": "smart-goal-planner",
+  "name": "smart-goal-2",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://kalebu1960.github.io/smart-goal-planner",
+  "homepage": "https://kalebu1960.github.io/smart-goal-2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kalebu1960/smart-goal-planner.git"
@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "gh-pages": "^6.3.0",
-    "json-server": "0.17.4",
+    "json-server": "^0.17.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.60.0",
