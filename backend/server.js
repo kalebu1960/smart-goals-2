@@ -1,14 +1,19 @@
 import express from 'express';
 import cors from 'cors';
 import jsonServer from 'json-server';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const jsonServerRouter = jsonServer.router('db.json');
+const jsonServerRouter = jsonServer.router(path.join(__dirname, 'db.json'));
 const jsonServerMiddlewares = jsonServer.defaults();
 
 const PORT = process.env.PORT || 3001;
 
-// CORS configuration for production
+// CORS configuration
 const corsOptions = {
   origin: [
     'http://localhost:3000',
@@ -23,12 +28,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// API routes
 app.use('/api', jsonServerMiddlewares, jsonServerRouter);
 
 app.listen(PORT, () => {
