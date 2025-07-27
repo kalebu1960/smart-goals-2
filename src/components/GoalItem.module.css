@@ -1,14 +1,87 @@
 .container {
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
 }
+
+.container:hover {
+  transform: translateY(-2px);
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.depositForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.depositForm input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.depositForm button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.depositForm button:hover {
+  background-color: #0056b3;
+}
+
 .buttons {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
-.depositForm {
-  margin-top: 0.5rem;
+
+.buttons button {
+  flex: 1;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.buttons button:first-child {
+  background-color: #ffc107; /* Edit */
+  color: #333;
+}
+
+.buttons button:first-child:hover {
+  background-color: #e0a800;
+}
+
+.buttons button:last-child {
+  background-color: #dc3545; /* Delete */
+  color: #fff;
+}
+
+.buttons button:last-child:hover {
+  background-color: #c82333;
+}
+
+form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
