@@ -2,7 +2,6 @@
   "name": "smart-goal-2",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://kalebu1960.github.io/smart-goal-2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kalebu1960/smart-goal-planner.git"
